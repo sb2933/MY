@@ -38,7 +38,6 @@ const AccessibilitySetupScreen = () => {
         {
           rate: state.accessibilitySettings.voiceSpeed,
           pitch: 1.0,
-          quality: Speech.VoiceQuality.Enhanced,
         }
       );    
     }

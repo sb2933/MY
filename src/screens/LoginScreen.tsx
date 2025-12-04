@@ -36,7 +36,7 @@ const LoginScreen = () => {
 
   const theme = useMemo(() => getThemeConfig(state.accessibilitySettings.isDarkMode), [state.accessibilitySettings.isDarkMode]);
   const styles = useMemo(() => createStyles(theme), [theme]);
-  const gradientColors = theme.gradient;
+  const gradientColors = theme.gradient as [string, string, ...string[]];
   const placeholderColor = theme.placeholder;
 
   useEffect(() => {
