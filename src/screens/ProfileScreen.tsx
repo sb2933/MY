@@ -5,18 +5,18 @@ import { LinearGradient } from 'expo-linear-gradient';
 import * as Speech from 'expo-speech';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
-    Alert,
-    Animated,
-    Dimensions,
-    Image,
-    Modal,
-    ScrollView,
-    StyleSheet,
-    Switch,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Alert,
+  Animated,
+  Dimensions,
+  Image,
+  Modal,
+  ScrollView,
+  StyleSheet,
+  Switch,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import { AppTheme, getThemeConfig } from '../../constants/theme';
 import { BackgroundLogo } from '../components/BackgroundLogo';
@@ -443,7 +443,6 @@ const ProfileScreen = () => {
                 <Ionicons name="shield-checkmark" size={14} color={theme.accent} />
                 <Text style={[styles.statText, { color: theme.textPrimary }]}>Verified</Text>
               </View>
-              <View style={[styles.statBadge, { backgroundColor: theme.cardBackground, borderColor: theme.cardBorder }]}>
               <TouchableOpacity
                 style={[styles.statBadge, { backgroundColor: theme.cardBackground, borderColor: theme.cardBorder }]}
                 onPress={() => setIsJoinDateModalVisible(true)}
@@ -452,10 +451,12 @@ const ProfileScreen = () => {
               >
                 <Ionicons name="calendar-outline" size={14} color={theme.accent} />
                 <Text style={[styles.statText, { color: theme.textPrimary }]}>Member</Text>
-              </View>
-              </TouchableOpacity>
-            </View>
-          
+            </TouchableOpacity>
+
+          </View>
+         </View>
+
+    
         </Animated.View>
 
         <View style={styles.heroActions}>
@@ -741,7 +742,7 @@ const ProfileScreen = () => {
               <View style={styles.infoItem}>
                 <Text style={[styles.infoLabel, { color: theme.textSecondary }]}>Account Created</Text>
                 <Text style={[styles.infoValue, { color: theme.textPrimary }]}>
-                  {{formattedJoinDate}}
+                  {formattedJoinDate}
                 </Text>
               </View>
             </View>
