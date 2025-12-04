@@ -188,6 +188,7 @@ const JoinDateModal: React.FC<JoinDateModalProps> = ({ visible, onClose, theme, 
   </Modal>
 );
 
+
 // Main Component
 const ProfileScreen = () => {
   const { state, dispatch } = useApp();
@@ -442,6 +443,7 @@ const ProfileScreen = () => {
                 <Ionicons name="shield-checkmark" size={14} color={theme.accent} />
                 <Text style={[styles.statText, { color: theme.textPrimary }]}>Verified</Text>
               </View>
+              <View style={[styles.statBadge, { backgroundColor: theme.cardBackground, borderColor: theme.cardBorder }]}>
               <TouchableOpacity
                 style={[styles.statBadge, { backgroundColor: theme.cardBackground, borderColor: theme.cardBorder }]}
                 onPress={() => setIsJoinDateModalVisible(true)}
@@ -450,9 +452,10 @@ const ProfileScreen = () => {
               >
                 <Ionicons name="calendar-outline" size={14} color={theme.accent} />
                 <Text style={[styles.statText, { color: theme.textPrimary }]}>Member</Text>
+              </View>
               </TouchableOpacity>
             </View>
-          </View>
+          
         </Animated.View>
 
         <View style={styles.heroActions}>
@@ -738,7 +741,7 @@ const ProfileScreen = () => {
               <View style={styles.infoItem}>
                 <Text style={[styles.infoLabel, { color: theme.textSecondary }]}>Account Created</Text>
                 <Text style={[styles.infoValue, { color: theme.textPrimary }]}>
-                  {formattedJoinDate}
+                  {{formattedJoinDate}}
                 </Text>
               </View>
             </View>
@@ -757,6 +760,7 @@ const ProfileScreen = () => {
     </LinearGradient>
     </>
   );
+  
 };
 
 export default ProfileScreen;

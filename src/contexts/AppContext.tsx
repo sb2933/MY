@@ -145,12 +145,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         const settingsData = await AsyncStorage.getItem('accessibilitySettings');
         const setupData = await AsyncStorage.getItem('hasCompletedSetup');
 
-        if (userData) {
-          const parsedUser = JSON.parse(userData);
-          const userWithJoinDate = parsedUser.joinDate ? parsedUser : { ...parsedUser, joinDate: new Date().toISOString() };
-          dispatch({ type: 'LOGIN', payload: userWithJoinDate });
+        if (userData) {      
+         const parsedUser = JSON.parse(userData);
+         const userWithJoinDate = parsedUser.joinDate ? parsedUser : { ...parsedUser, joinDate: new Date().toISOString() };
+         dispatch({ type: 'LOGIN', payload: userWithJoinDate });
 
-          if (!parsedUser.joinDate) {
+         if (!parsedUser.joinDate) {
             await AsyncStorage.setItem('user', JSON.stringify(userWithJoinDate));
           }
         }

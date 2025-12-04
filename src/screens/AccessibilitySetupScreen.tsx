@@ -3,11 +3,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 import * as Speech from 'expo-speech';
 import React, { useEffect, useMemo, useState } from 'react';
 import {
-    Animated,
-    Dimensions,
-    StyleSheet,
-    Text,
-    View,
+  Animated,
+  Dimensions,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import { AppTheme, getThemeConfig } from '../../constants/theme';
 import { AccessAidLogo } from '../components/AccessAidLogo';

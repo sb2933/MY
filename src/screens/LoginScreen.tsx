@@ -155,7 +155,6 @@ const LoginScreen = () => {
         email: email.toLowerCase().trim(),
         pin,
         name: name.trim(),
-        joinDate: new Date().toISOString(),
       };
       const nextUsers = [newUser, ...users];
       await AsyncStorage.setItem('users', JSON.stringify(nextUsers));
