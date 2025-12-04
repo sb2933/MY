@@ -56,7 +56,7 @@ const HomeScreen = () => {
 
   const theme = useMemo(() => getThemeConfig(state.accessibilitySettings.isDarkMode), [state.accessibilitySettings.isDarkMode]);
   const styles = useMemo(() => createStyles(theme), [theme]);
-  const gradientColors = theme.gradient;
+  const gradientColors = theme.gradient as [string, string, ...string[]];
   const placeholderColor = theme.placeholder;
 
   useEffect(() => {
@@ -255,11 +255,13 @@ const HomeScreen = () => {
    */
   const getOCRAPIKey = (): string => {
     // Try multiple ways to access the API key (for different Expo versions)
+    const manifestExtra = (Constants.manifest as { extra?: { OCR_SPACE_API_KEY?: string } } | null)?.extra;
+    const manifest2Extra = (Constants.manifest2 as { extra?: { OCR_SPACE_API_KEY?: string } } | undefined)?.extra;
+
     const key =
       Constants.expoConfig?.extra?.OCR_SPACE_API_KEY ||
-      (Constants.expoConfig as any)?.extra?.OCR_SPACE_API_KEY ||
-      Constants.manifest?.extra?.OCR_SPACE_API_KEY ||
-      (Constants.manifest2?.extra as any)?.OCR_SPACE_API_KEY ||
+       manifestExtra?.OCR_SPACE_API_KEY ||
+       manifest2Extra?.OCR_SPACE_API_KEY ||
       (process.env as any)?.EXPO_PUBLIC_OCR_SPACE_API_KEY ||
       '';
 
@@ -375,7 +377,13 @@ const HomeScreen = () => {
     try {
       const info = await FileSystemLegacy.getInfoAsync(uri);
 
-      if (info.size && info.size > 1024 * 1024) {
+      if (!info.exists || info.isDirectory) {
+        throw new Error('File not found or is a directory.');
+      }
+
+      const { size } = info as FileSystemLegacy.FileInfo & { size?: number };
+
+      if (size && size > 1024 * 1024) {
         throw new Error('File size exceeds 1 MB limit. Please choose a smaller file.');
       }
 
